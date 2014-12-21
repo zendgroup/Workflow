@@ -103,7 +103,7 @@ return array(
     ),
     'doctrine' => array(
         'driver' => array(
-            'Workflow_Model_Entities' => array(
+            'Workflow_Driver' => array(
                 'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
                 'cache' => 'array',
                 'paths' => array(
@@ -112,7 +112,7 @@ return array(
             ),
             'orm_default' => array(
                 'drivers' => array(
-                    'My\Model\Entities' => 'Workflow_Model_Entities'
+                    __NAMESPACE__. '\Model\Entities' => 'Workflow_Driver'
                 )
             )
         ),
