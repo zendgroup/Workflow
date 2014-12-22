@@ -4,10 +4,10 @@ namespace Workflow\Form;
 use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Workflow\Form\Fieldset\StatusFieldset;
-use Zend\Form\Form;
+use ZgBase\Form\ProvidesEventsForm;
 use Zend\Form\Element;
 
-class StatusForm extends Form
+class StatusForm extends ProvidesEventsForm
 {
 
     protected $csrfToken;

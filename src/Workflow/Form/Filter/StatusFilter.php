@@ -1,9 +1,9 @@
 <?php
 namespace Workflow\Form\Filter;
 
-use Zend\InputFilter\InputFilter;
+use ZgBase\InputFilter\ProvidesEventsInputFilter;
 
-class StatusFilter extends InputFilter
+class StatusFilter extends ProvidesEventsInputFilter
 {
 
     public function __construct()
