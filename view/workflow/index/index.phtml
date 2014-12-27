@@ -10,15 +10,19 @@
                 </div>
             </div>
             <div class="widget-content">
+            <?php foreach ($this->status as $status):?>
+                Title: <?php echo $status->getTitle(); ?>
+                <br>
+                Description: <?php echo $status->getDescription(); ?>
+                <br>
+                Options: <?php echo $status->getOptions(); ?>
+                <br>
+                <?php $updateDate = (array)$status->getUpdated(); ?>
+                Updated date: <?php echo date('d/m/Y',strtotime($updateDate['date'])); ?>
                 <br>
                 <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+            <?php endforeach;?>
+
             </div>
             <div class="divider"></div>
             <div class="widget-content">

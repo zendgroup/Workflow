@@ -16,6 +16,9 @@ class IndexController extends ActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        $statusRepo = $this->getEntityManager()->getRepository('Workflow\Model\Entities\Status');
+        $status = $statusRepo->findAll();
+//         echo "<pre> \n"; print_r($status[0]->getTitle()); die("<br />\n Debug in: ". __METHOD__ );
+        return new ViewModel(array('status' => $status));
     }
 }
