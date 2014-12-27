@@ -29,31 +29,62 @@
 namespace Workflow;
 
 return array(
+    'baseUrl'   => '/',
     'router' => array(
         'routes' => array(
-            'admincp_workflow' => array(
-                'type' => 'Zend\\Mvc\\Router\\Http\\Segment',
+            'fo_workflow' => array(
+                'type'    => 'Literal',
                 'options' => array(
-                    'route' => '/admincp/workflow[/:controller][/:action][/id/:id][/from/:from][/to/:to][/page/:page][/gid/:gid][/pid/:pid][/lang/:lang][/status/:status][/detail/:detail][/][/version/:version][/]',
-                    'constraints' => array(
-                        'module' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9]*',
-                        'page' => '[0-9]*',
-                        'detail' => '[0-9]*'
-                    ),
+                    'route'    => '/workflow',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Workflow\Controller',
-                        'module' => 'workflow',
-                        'controller' => 'index',
-                        'action' => 'index',
-                        'id' => 0,
-                        'page' => 1
-                    )
-                )
-            )
-        )
+                        'controller'    => 'Index',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'bo_workflow' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/admincp/workflow',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Workflow\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                    'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                    'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+        ),
     ),
     'service_manager' => array(
         'abstract_factories' => array(
