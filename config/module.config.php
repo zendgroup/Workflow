@@ -73,10 +73,12 @@ return array(
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/[:controller[/:action]]',
+                            'route'    => '/[:controller[/:action]][/id/:id][/pid/:pid][/]',
                             'constraints' => array(
-                                    'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                    'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id'         => '[0-9]*',
+                                'pid'        => '[0-9]*',
                             ),
                             'defaults' => array(
                             ),
@@ -92,7 +94,8 @@ return array(
             'Zend\Log\LoggerAbstractServiceFactory'
         ),
         'factories' => array(
-            'StatusForm' => 'Workflow\Form\Service\StatusFormFactory'
+            'StatusForm' => 'Workflow\Form\Service\StatusFormFactory',
+            'WorkflowForm' => 'Workflow\Form\Service\WorkflowFormFactory'
         ),
         'aliases' => array(
             'translator' => 'MvcTranslator'

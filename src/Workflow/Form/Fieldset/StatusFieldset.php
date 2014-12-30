@@ -22,7 +22,7 @@ class StatusFieldset extends Fieldset implements InputFilterProviderInterface
                 'class' => 'form-control required'
             ),
             'options' => array(
-                'label' => 'Status Title'
+                'label' => 'Status Title',
             )
         ));
 

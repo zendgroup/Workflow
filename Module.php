@@ -46,23 +46,23 @@ class Module extends AbstractModule
         return __NAMESPACE__;
     }
 
-//     public function getAutoloaderConfig()
+//     public function getServiceConfig()
 //     {
 //         return array(
-//             'Zend\Loader\ClassMapAutoloader' => array(
-//                 __DIR__ . '/autoload_classmap.php',
-//             ),
-//             'Zend\Loader\StandardAutoloader' => array(
-//                 'namespaces' => array(
-//                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-//                 ),
+//             'factories' => array(
+//                 'doctrine.connection.orm_workflow'           => new \DoctrineORMModule\Service\DBALConnectionFactory('orm_workflow'),
+//                 'doctrine.configuration.orm_workflow'        => new \DoctrineORMModule\Service\ConfigurationFactory('orm_workflow'),
+//                 'doctrine.entitymanager.orm_workflow'        => new \DoctrineORMModule\Service\EntityManagerFactory('orm_workflow'),
+
+//                 'doctrine.driver.orm_workflow'               => new \DoctrineModule\Service\DriverFactory('orm_workflow'),
+//                 'doctrine.eventmanager.orm_workflow'         => new \DoctrineModule\Service\EventManagerFactory('orm_workflow'),
+//                 'doctrine.entity_resolver.orm_workflow'      => new \DoctrineORMModule\Service\EntityResolverFactory('orm_workflow'),
+//                 'doctrine.sql_logger_collector.orm_workflow' => new \DoctrineORMModule\Service\SQLLoggerCollectorFactory('orm_workflow'),
+
+//                 'DoctrineORMModule\Form\Annotation\AnnotationBuilder' => function(\Zend\ServiceManager\ServiceLocatorInterface $sl) {
+//                     return new \DoctrineORMModule\Form\Annotation\AnnotationBuilder($sl->get('doctrine.entitymanager.orm_workflow'));
+//                 },
 //             ),
 //         );
 //     }
-
-//     public function getConfig() {
-
-//         return include $this->getDir() . '/config/module.config.php';
-//     }
-
 }

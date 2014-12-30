@@ -1,0 +1,45 @@
+<?php
+$statusForm = $this->statusForm;
+
+$statusForm->setAttribute('action', $this->url('bo_workflow/default', array('controller' => 'status', 'action' => 'add')))->prepare();
+$statusForm->prepare();
+?>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget box">
+            <div class="widget-header">
+                <h4><i class="icon-reorder"></i> <?php echo $this->translate('Add new status'); ?> </h4>
+                <div class="toolbar no-padding">
+                    <div class="btn-group">
+                        <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="widget-content">
+            <?php echo $this->form()->openTag($statusForm); ?>
+            <?php echo $this->formHidden($statusForm->get('statusId'))?>
+            <div class="form-group">
+                <label class="col-md-2 control-label"><?php echo $this->translate("Title"); ?></label>
+                <div class="col-md-10"><?php echo $this->formRow($statusForm->get('title'))?></div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label"><?php echo $this->translate("Description"); ?></label>
+                <div class="col-md-10"><?php echo $this->formRow($statusForm->get('description'))?></div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label"><?php echo $this->translate("Options"); ?></label>
+                <div class="col-md-10"><?php echo $this->formRow($statusForm->get('options'))?></div>
+            </div>
+            <?php echo $this->formHidden($statusForm->get('csrf')); ?>
+            <div class="form-group">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+            <?php echo $this->formRow($statusForm->get('submit')); ?>
+            </div>
+            </div>
+            <?php echo $this->form()->closeTag(); ?>
+            </div>
+        </div>
+    </div> <!-- /.col-md-12 -->
+</div> <!-- /.row -->

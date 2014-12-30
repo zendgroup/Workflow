@@ -1,14 +1,38 @@
 <?php
 
+/**
+ * ZEND GROUP
+ *
+ * @name        WorkflowAssociation.php
+ * @category    My
+ * @package     Model
+ * @subpackage  Model\Entities
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @copyright   Copyright (c)2008-2010 ZEND GROUP. All rights reserved
+ * @license     http://zendgroup.vn/license/
+ * @version     $1.0$
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ *
+ */
+
 namespace Workflow\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * WorkflowAssociation
  *
  * @ORM\Table(name="workflow_association", indexes={@ORM\Index(name="workflow_id", columns={"workflow_id"}), @ORM\Index(name="status_id", columns={"status_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Workflow\Model\Repositories\WorkflowAssociation")
  */
 class WorkflowAssociation
 {
@@ -54,7 +78,6 @@ class WorkflowAssociation
      * })
      */
     private $workflow;
-
 
 
     /**

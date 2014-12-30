@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget box">
+            <div class="widget-header">
+                <h4><i class="icon-reorder"></i> <?php echo 'Workflow::StatusController::indexAction'; ?> </h4>
+                <div class="toolbar no-padding">
+                    <div class="btn-group">
+                        <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="widget-content">
+            <?php foreach ($this->status as $status):?>
+                Title: <?php echo $status->getTitle(); ?>
+                <br>
+                Description: <?php echo $status->getDescription(); ?>
+                <br>
+                Options: <?php echo $status->getOptions(); ?>
+                <br>
+                <?php $updateDate = (array)$status->getUpdated(); ?>
+                Updated date: <?php echo (isset($updateDate['date'])) ? date('d/m/Y',strtotime($updateDate['date'])) : ''; ?>
+                <br>
+                <br>
+            <?php endforeach;?>
+
+            </div>
+            <div class="divider"></div>
+            <div class="widget-content">
+                <br>
+            </div>
+        </div>
+    </div> <!-- /.col-md-12 -->
+</div> <!-- /.row -->

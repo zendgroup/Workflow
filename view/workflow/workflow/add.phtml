@@ -1,0 +1,49 @@
+<?php
+$workflowForm = $this->workflowForm;
+
+$workflowForm->setAttribute('action', $this->url('bo_workflow/default', array('controller' => 'workflow', 'action' => 'add')))->prepare();
+$workflowForm->prepare();
+?>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget box">
+            <div class="widget-header">
+                <h4><i class="icon-reorder"></i> <?php echo $this->translate('Add new workflow'); ?> </h4>
+                <div class="toolbar no-padding">
+                    <div class="btn-group">
+                        <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="widget-content">
+            <?php echo $this->form()->openTag($workflowForm); ?>
+            <?php echo $this->formHidden($workflowForm->get('workflowId'))?>
+            <div class="form-group">
+                <label class="col-md-2 control-label"><?php echo $this->translate("Title"); ?></label>
+                <div class="col-md-10"><?php echo $this->formRow($workflowForm->get('title'))?></div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label"><?php echo $this->translate("Description"); ?></label>
+                <div class="col-md-10"><?php echo $this->formRow($workflowForm->get('description'))?></div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label"><?php echo $this->translate("Options"); ?></label>
+                <div class="col-md-10"><?php echo $this->formRow($workflowForm->get('options'))?></div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label"><?php echo $this->translate("Ordering"); ?></label>
+                <div class="col-md-10"><?php echo $this->formRow($workflowForm->get('ordering'))?></div>
+            </div>
+            <?php echo $this->formHidden($workflowForm->get('csrf')); ?>
+            <div class="form-group">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+            <?php echo $this->formRow($workflowForm->get('submit')); ?>
+            </div>
+            </div>
+            <?php echo $this->form()->closeTag(); ?>
+            </div>
+        </div>
+    </div> <!-- /.col-md-12 -->
+</div> <!-- /.row -->

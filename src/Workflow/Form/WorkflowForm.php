@@ -28,6 +28,7 @@
  *
  */
 
+
 namespace Workflow\Form;
 
 use Doctrine\Common\Persistence\ObjectManager;
@@ -36,22 +37,21 @@ use Workflow\Form\Fieldset\StatusFieldset;
 use ZgBase\Form\ProvidesEventsForm;
 use Zend\Form\Element;
 
-class StatusForm extends ProvidesEventsForm
+class WorkflowForm extends ProvidesEventsForm
 {
 
     protected $csrfToken;
 
     public function __construct(ObjectManager $objectManager)
     {
-        parent::__construct('status-form');
+        parent::__construct('workflow-form');
 
-        $this->setHydrator(new DoctrineHydrator($objectManager, '\Workflow\Model\Entities\Status'));
+        $this->setHydrator(new DoctrineHydrator($objectManager, '\Workflow\Model\Entities\Workflow'));
 
         $statusFieldset = new StatusFieldset($objectManager);
         $statusFieldset->setUseAsBaseFieldset(true);
-//         $this->add($statusFieldset);
 
-        $this->setName('status-form');
+        $this->setName('workflow-form');
         $this->setAttribute('class', 'form-horizontal');
         $this->setAttribute('method', 'POST');
 
@@ -61,43 +61,41 @@ class StatusForm extends ProvidesEventsForm
     public function addElements()
     {
         $this->add(array(
-            'name' => 'statusId',
+            'name' => 'workflowId',
             'type' => 'Hidden'
         ));
 
         $this->add(array(
             'type' => 'text',
+            'name' => 'title',
             'attributes' => array(
-                'name' => 'title',
                 'class' => 'form-control required'
-            ),
-//             'options' => array(
-//                 'label' => 'Status Title',
-//             )
+            )
         ));
 
         $this->add(array(
             'type' => 'textarea',
+            'name' => 'description',
             'attributes' => array(
-                'name' => 'description',
                 'class' => 'form-control',
                 'style' => 'height: 100px'
-            ),
-//             'options' => array(
-//                 'label' => 'Description'
-//             )
+            )
         ));
 
         $this->add(array(
             'type' => 'textarea',
+            'name' => 'options',
             'attributes' => array(
-                'name' => 'options',
                 'class' => 'form-control',
                 'style' => 'height: 100px'
-            ),
-//             'options' => array(
-//                 'label' => 'Options'
-//             )
+            )
+        ));
+        $this->add(array(
+            'type' => 'text',
+            'name' => 'ordering',
+            'attributes' => array(
+                'class' => 'form-control'
+            )
         ));
         $this->add(new Element\Csrf('csrf'));
         $this->add(array(

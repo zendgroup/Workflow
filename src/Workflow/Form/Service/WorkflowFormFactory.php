@@ -31,18 +31,18 @@
 namespace Workflow\Form\Service;
 
 // use Traversable;
-use Workflow\Form\Filter\StatusFilter;
-use Workflow\Form\StatusForm;
+use Workflow\Form\Filter\WorkflowFilter;
+use Workflow\Form\WorkflowForm;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class StatusFormFactory implements FactoryInterface
+class WorkflowFormFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $services)
     {
         $objectManager = $services->get('Doctrine\ORM\EntityManager');
-        $filter  = new StatusFilter();
-        $form    = new StatusForm($objectManager);
+        $filter  = new WorkflowFilter();
+        $form    = new WorkflowForm($objectManager);
         $form->setInputFilter($filter);
         return $form;
     }

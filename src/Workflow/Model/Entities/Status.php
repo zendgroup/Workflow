@@ -1,14 +1,38 @@
 <?php
 
+/**
+ * ZEND GROUP
+ *
+ * @name        Status.php
+ * @category    My
+ * @package     Model
+ * @subpackage  Model\Entities
+ * @author      Thuy Dinh Xuan <thuydx@zendgroup.vn>
+ * @copyright   Copyright (c)2008-2010 ZEND GROUP. All rights reserved
+ * @license     http://zendgroup.vn/license/
+ * @version     $1.0$
+ *
+ * LICENSE
+ *
+ * This source file is copyrighted by ZEND GROUP, full details in LICENSE.txt.
+ * It is also available through the Internet at this URL:
+ * http://zendgroup.vn/license/
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the Internet, please send an email
+ * to license@zendgroup.vn so we can send you a copy immediately.
+ *
+ */
+
 namespace Workflow\Model\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * Status
  *
  * @ORM\Table(name="status")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Workflow\Model\Repositories\Status")
  */
 class Status
 {
@@ -55,7 +79,6 @@ class Status
      * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
     private $updated;
-
 
 
     /**

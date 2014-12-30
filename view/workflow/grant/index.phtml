@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget box">
+            <div class="widget-header">
+                <h4><i class="icon-reorder"></i> <?php echo 'Workflow::IndexController::indexAction'; ?> </h4>
+                <div class="toolbar no-padding">
+                    <div class="btn-group">
+                        <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="widget-content clearfix">
+                <!-- Left box -->
+                <div class="left-box">
+                    <input type="text" placeholder="Filter entries..." class="form-control box-filter" id="box1Filter">
+                    <button class="filter" id="box1Clear" type="button">x</button>
+                    <select class="multiple" multiple="multiple" id="box1View">
+                    <?php foreach ($this->status as $status): ?>
+                        <option value="<?php echo $status->getStatusId(); ?>"><?php echo $status->getTitle()?></option>
+                    <?php endforeach; ?>
+                    </select>
+                    <span class="count-label" id="box1Counter">Showing <?php echo count($this->status)?> of <?php echo count($this->status)?></span>
+                    <select id="box1Storage" style="display: none;"></select>
+                </div>
+                <!--left-box -->
+
+                <!-- Control buttons -->
+                <div class="dual-control">
+                    <button class="btn" type="button" id="to2">&nbsp;&gt;&nbsp;</button>
+                    <button class="btn" type="button" id="allTo2">&nbsp;&gt;&gt;&nbsp;</button><br>
+                    <button class="btn" type="button" id="to1">&nbsp;&lt;&nbsp;</button>
+                    <button class="btn" type="button" id="allTo1">&nbsp;&lt;&lt;&nbsp;</button>
+                </div>
+                <!--control buttons -->
+
+                <!-- Right box -->
+                <div class="right-box">
+                    <input type="text" placeholder="Filter entries..." class="form-control box-filter" id="box2Filter">
+                    <button class="filter" id="box2Clear" type="button">x</button>
+                    <select class="multiple" multiple="multiple" id="box2View">
+
+                    </select>
+                    <span class="count-label" id="box2Counter">Showing 0 of 0</span>
+                    <select id="box2Storage" style="display: none;"></select>
+                </div>
+                <!--right box -->
+            </div>
+        </div>
+    </div> <!-- /.col-md-12 -->
+</div> <!-- /.row -->

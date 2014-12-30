@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget box">
+            <div class="widget-header">
+                <h4><i class="icon-reorder"></i> <?php echo 'Workflow::IndexController::indexAction'; ?> </h4>
+                <div class="toolbar no-padding">
+                    <div class="btn-group">
+                        <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
+                    </div>
+                </div>
+            </div>
+            <form action="<?php echo $this->url('bo_workflow/default', array('controller' => 'grant', 'action' => 'status', 'id' => $this->_id))?>" method="post">
+            <div class="widget-content clearfix">
+                <!-- Left box -->
+                <div class="left-box">
+                    <input type="text" placeholder="Filter entries..." class="form-control box-filter" id="box1Filter">
+                    <button class="filter" id="box1Clear" type="button">x</button>
+                    <select class="multiple" multiple="multiple" id="box1View">
+                    <?php foreach ($this->status as $status): ?>
+                        <option value="<?php echo $status->getStatusId(); ?>"><?php echo $status->getTitle()?></option>
+                    <?php endforeach; ?>
+                    </select>
+                    <span class="count-label" id="box1Counter">Showing <?php echo count($this->status)?> of <?php echo count($this->status)?></span>
+                    <select id="box1Storage" style="display: none;"></select>
+                </div>
+                <!--left-box -->
+
+                <!-- Control buttons -->
+                <div class="dual-control">
+                    <button class="btn" type="button" id="to2">&nbsp;&gt;&nbsp;</button>
+                    <button class="btn" type="button" id="allTo2">&nbsp;&gt;&gt;&nbsp;</button><br>
+                    <button class="btn" type="button" id="to1">&nbsp;&lt;&nbsp;</button>
+                    <button class="btn" type="button" id="allTo1">&nbsp;&lt;&lt;&nbsp;</button>
+                </div>
+                <!--control buttons -->
+
+                <!-- Right box -->
+                <div class="right-box">
+                    <input type="text" placeholder="Filter entries..." class="form-control box-filter" id="box2Filter">
+                    <button class="filter" id="box2Clear" type="button">x</button>
+                    <select class="multiple" multiple="multiple" id="box2View" name="selectedStatus[]">
+                    <?php if(count($this->association)) : ?>
+                    <?php foreach ($this->association as $assoc) : ?>
+                        <option value="<?php echo $assoc->getStatus()->getStatusId(); ?>"><?php echo $assoc->getStatus->getTitle()?></option>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+                    </select>
+                    <span class="count-label" id="box2Counter">Showing 0 of 0</span>
+                    <select id="box2Storage" style="display: none;"></select>
+                </div>
+                <!--right box -->
+            </div>
+            <div class="divider"></div>
+            <div class="widget-content clearfix">
+                <div class="form-group">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-7">
+                        <input type="submit" value="Submit" class="btn btn-primary" name="submit">
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div> <!-- /.col-md-12 -->
+</div> <!-- /.row -->

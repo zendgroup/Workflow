@@ -32,7 +32,7 @@ namespace Workflow\Form\Filter;
 
 use ZgBase\InputFilter\ProvidesEventsInputFilter;
 
-class StatusFilter extends ProvidesEventsInputFilter
+class WorkflowFilter extends ProvidesEventsInputFilter
 {
 
     public function __construct()
@@ -86,6 +86,21 @@ class StatusFilter extends ProvidesEventsInputFilter
             'name' => 'options',
             'required' => false,
             'filters' => array(
+                array(
+                    'name' => 'StripTags'
+                ),
+                array(
+                    'name' => 'StringTrim'
+                )
+            )
+        ));
+        $this->add(array(
+            'name' => 'ordering',
+            'required' => false,
+            'filters' => array(
+                array(
+                    'name' => 'Int'
+                ),
                 array(
                     'name' => 'StripTags'
                 ),
